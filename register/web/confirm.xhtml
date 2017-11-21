@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>JSF Registration Application</title>
+</h:head>
+
+<h:body>
+    <h:form id="form">
+        <h2>JSF Registration Application</h2>
+        <h4>Registration Confirmation</h4>
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="First name"/>
+            <h:outputText value="#{registerController.firstName}" />
+
+            <h:outputLabel value="Last name"/>
+            <h:outputText value="#{registerController.lastName}" />
+
+            <h:outputLabel value="Gender"/>
+            <h:outputText value="#{registerController.sex == true ? 'Male' : 'Female'}" />
+
+            <h:outputLabel value="Birthday"/>
+            <h:outputText value="#{registerController.dateOfBirth}" >
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:outputText>
+
+            <h:outputLabel value="Email address"/>
+            <h:outputText value="#{registerController.emailAddress}" />
+
+            <h:outputLabel value="Service Level"/>
+            <h:outputText value="#{registerController.serviceLevel == 1 ? 'Medium' : (registerController.serviceLevel == 2 ? 'Basic' : 'Premium')}" />
+        </h:panelGrid>
+
+        <p><h:commandButton value="Edit" action="register" /></p>
+        <p><h:commandButton value="Confirm" action="#{registerController.addConfirmedUser}" /></p>
+    </h:form>
+</h:body>
+</html>
