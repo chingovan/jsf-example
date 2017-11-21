@@ -1,5 +1,6 @@
 package com.blogspot.chingovan.jsf_example.register;
 
+import com.blogspot.chingovan.jsf_example.util.ServiceLevel;
 import sun.security.validator.ValidatorException;
 
 import javax.faces.application.FacesMessage;
@@ -22,6 +23,14 @@ public class RegisterController {
     private String emailAddress;
     private Date dateOfBirth = new Date();
     private int serviceLevel;
+
+    public RegisterController() {
+        this.firstName = "John";
+        this.lastName = "MC";
+        this.sex = true;
+        this.emailAddress = "john@abc.com";
+        this.serviceLevel = ServiceLevel.MEDIUM.value;
+    }
 
     //Setter and Getter
     public String getFirstName() {
