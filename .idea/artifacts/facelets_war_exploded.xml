@@ -8,8 +8,8 @@
           <element id="module-output" name="facelets" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Mojarra-2.2.1" />
-          <element id="library" level="project" name="PrimeFaces-6.1" />
+          <element id="library" level="application" name="Mojarra-2.2.1" />
+          <element id="library" level="application" name="PrimeFaces-6.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
