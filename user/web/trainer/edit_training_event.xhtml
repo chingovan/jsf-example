@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+    <body>
+        <ui:composition template="../template.xhtml" >
+            <ui:define name="content">
+                <h3>Event Information</h3>
+                <h:form>
+                    <c:if test="#{! empty editTrainingEventBacking.selectedEvent}">
+                        <c:set
+                                target="#{flash}"
+                                property="selectedEvent"
+                                value="#{editTrainingEventBacking.selectedEvent}"
+                        />
+                    </c:if>
+
+                    <c:if test="#{! empty flash.selectedEvent}">
+                        <c:set
+                                target="#{editTrainingEventBacking}"
+                                property="selectedEvent"
+                                value="#{flash.selectedEvent}"
+                        />
+                    </c:if>
+                    <h:panelGrid
+                            columns="4"
+                            width="100%"
+                            border="0"
+                            class="form-bkg"
+                    >
+                        <h:outputText value="Event Title" />
+                        <h:inputText
+                                value="#{editTrainingEventBacking.selectedEvent.name}"
+                                required="true"
+                        />
+                        <h:outputText value="Event Type" />
+                        <h:inputText
+                                value="#{editTrainingEventBacking.selectedEvent.type}"
+                                required="true"
+                        />
+
+                        <h:outputText value="Event Date" />
+                        <h:inputText
+                                value="#{editTrainingEventBacking.selectedEvent.completionDate}"
+                                required="true"
+                        >
+                            <f:convertDateTime pattern="MM-dd-yy" />
+                        </h:inputText>
+                        <h:outputText value="Skill" />
+                        <h:selectOneMenu
+                                label="Skill"
+                                id="slevel"
+                                value="#{editTrainingEventBacking.selectedEvent.skill}"
+                        >
+                            <f:selectItem itemLabel="Beginner" itemValue="0" />
+                            <f:selectItem itemLabel="Intermediate" itemValue="1" />
+                            <f:selectItem itemLabel="Advanced" itemValue="2" />
+                        </h:selectOneMenu>
+
+                        <h:commandButton
+                                action="#{editTrainingEventBacking.updateExistingTrainingEvent}"
+                                value="Update Event" />
+                        <h:outputText value="&nbsp;" />
+                        <h:outputText value="&nbsp;" />
+                        <h:button
+                                outcome="/user/all_events?faces-redirect=true"
+                                value="Cancel"
+                        />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

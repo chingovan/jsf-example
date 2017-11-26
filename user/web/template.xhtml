@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+    <ui:insert name="metadata"/>
+
+    <f:event type="preRenderView" listener="#{loginBacking.forwardToLoginIfNotLoggedIn}" />
+
+    <h:head>
+        <title><ui:insert name="title">Virtual Trainer</ui:insert></title>
+        <h:outputStylesheet library="style" name="vt.css" />
+    </h:head>
+
+    <h:body>
+        <table width="100%" border="0">
+            <tr>
+                <td height="89">
+                    <h1 align="center">
+                        <img src="#{resource['style:logo.jpg']}" alt="Logo"></img>
+                        JSF Virtual Trainer Application
+                    </h1>
+                </td>
+            </tr>
+
+            <c:if test="#{loginBacking.userLoggedIn}">
+                <tr>
+                    <td align="right">
+                        <h:form>
+                            Logged in as #{sessionScope.currentUser.userId}, <h:commandButton value="Logout" actionListener="#{loginBacking.performLogout}"/>
+                        </h:form>
+                    </td>
+                </tr>
+            </c:if>
+        </table>
+
+        <table width="100%" border="0">
+            <tr>
+                <td width="20%">
+                    <c:if test="#{loginBacking.userLoggedIn}">
+                        <h3>Navigation Bar</h3>
+
+                        <c:if test="#{loginBacking.currentUser.trainer }">
+                            <h:link outcome="/trainer/add_training_event">Add Training Event</h:link><br />
+                            <h:link outcome="/trainer/view_trainees">Monitor Trainee Progress</h:link><br />
+                        </c:if>
+
+                        <h:link outcome="/user/edit_user">My Profile</h:link> <br />
+                        <h:link outcome="/user/all_events">All Events</h:link> <br />
+                    </c:if>
+                </td>
+                <td><ui:insert name="content" /></td>
+            </tr>
+        </table>
+    </h:body>
+</html>

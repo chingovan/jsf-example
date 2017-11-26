@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+    <body>
+        <ui:composition template="template.xhtml" >
+            <ui:define name="metadata">
+                <f:event type="preRenderView" listener="#{loginBacking.forwardToMainIfNotTrainer}" />
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="1">
+                        <vt:loginPanel model="#{loginBacking}">
+                            <f:facet name="loginOutcomeChoiceList">
+                                <h:selectOneMenu binding="#{loginBacking.loginOutcomeChoiceList}" >
+                                    <f:selectItem itemLabel="Everyone's Events" itemValue="all_events" />
+                                    <f:selectItem itemLabel="My Events" itemValue="my_events" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </vt:loginPanel>
+                    </h:panelGrid>
+                </h:form>
+
+
+                <h:form>
+                    <h:commandButton value="Register" action="register?faces-redirect=true" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
