@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+    <h:head>
+        <title>Primefaces Convert</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <h:outputLabel value="Name"/>
+            <h:inputText id="name" label="Name" value="#{convertController.name}" required="true" />
+
+            <p />
+            <h:outputLabel value="Weight"/>
+
+            <h:inputText id="weight" label="Weight" value="#{convertController.weight}" required="true">
+                <f:converter converterId="com.blogspot.chingovan.jsf_example.convert.Weight" />
+            </h:inputText>
+
+            <p:commandButton actionListener="#{convertController.save}" value="Submit"/>
+        </h:form>
+    </h:body>
+</html>
