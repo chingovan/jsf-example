@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/convert/convert.iml" filepath="$PROJECT_DIR$/convert/convert.iml" />
       <module fileurl="file://$PROJECT_DIR$/facelets/facelets.iml" filepath="$PROJECT_DIR$/facelets/facelets.iml" />
       <module fileurl="file://$PROJECT_DIR$/jsf-example.iml" filepath="$PROJECT_DIR$/jsf-example.iml" />
       <module fileurl="file://$PROJECT_DIR$/login/login.iml" filepath="$PROJECT_DIR$/login/login.iml" />
       <module fileurl="file://$PROJECT_DIR$/params/params.iml" filepath="$PROJECT_DIR$/params/params.iml" />
       <module fileurl="file://$PROJECT_DIR$/register/register.iml" filepath="$PROJECT_DIR$/register/register.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trainer/trainer.iml" filepath="$PROJECT_DIR$/trainer/trainer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
     </modules>
   </component>
 </project>
